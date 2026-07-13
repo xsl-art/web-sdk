@@ -15,6 +15,6 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xyz/web-sdk.git"
+    "url": "git@github.com:xsl-art/web-sdk.git"
   }
 }
