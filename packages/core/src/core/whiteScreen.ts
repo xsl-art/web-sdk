@@ -101,14 +101,13 @@ export function openWhiteScreen(
   //开启白屏轮询
   function openWhiteLoop(): void {
     if (_support._loopTimer) return;
-    ((_support._loopTimer = setInterval(() => {
+    _support._loopTimer = setInterval(() => {
       if (skeletonProject) {
         _whiteLoopNum++;
         _skeletonNowList = [];
       }
       idleCallback();
-    })),
-      1000);
+    }, 1000);
   }
 
   function idleCallback() {

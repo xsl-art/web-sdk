@@ -7,6 +7,7 @@ importers:
       '@changesets/cli': ^2.27.11
       '@commitlint/cli': ^19.6.1
       '@commitlint/config-conventional': ^19.6.0
+      '@eslint/js': ^10.0.1
       '@rollup/plugin-commonjs': ^28.0.2
       '@rollup/plugin-json': ^6.1.0
       '@rollup/plugin-node-resolve': ^16.0.3
@@ -22,6 +23,7 @@ importers:
       eslint: ^9.21.0
       eslint-config-prettier: ^10.0.1
       eslint-plugin-prettier: ^5.2.3
+      globals: ^17.7.0
       husky: ^9.1.7
       js-base64: ^3.8.1
       lint-staged: ^15.4.3
@@ -51,6 +53,7 @@ importers:
       '@changesets/cli': 2.31.0_@types+node@22.20.1
       '@commitlint/cli': 19.8.1_gvrsmqveldv2dohqgbmro5d2au
       '@commitlint/config-conventional': 19.8.1
+      '@eslint/js': 10.0.1_eslint@9.39.5
       '@rollup/plugin-commonjs': 28.0.9_rollup@4.62.2
       '@rollup/plugin-json': 6.1.0_rollup@4.62.2
       '@rollup/plugin-node-resolve': 16.0.3_rollup@4.62.2
@@ -63,6 +66,7 @@ importers:
       eslint: 9.39.5
       eslint-config-prettier: 10.1.8_eslint@9.39.5
       eslint-plugin-prettier: 5.5.6_au255mijmwcfmmowo2ekxttuzi
+      globals: 17.7.0
       husky: 9.1.7
       lint-staged: 15.5.2
       prettier: 3.9.5
@@ -545,6 +549,18 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@eslint/js/10.0.1_eslint@9.39.5:
+    resolution: {integrity: sha512-zeR9k5pd4gxjZ0abRoIaxdc7I3nDktoXZk2qOv9gCNWx3mVwEn32VRhyLaRsDiJjTs0xq/T8mfPtyuXu7GWBcA==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+    peerDependencies:
+      eslint: ^10.0.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+    dependencies:
+      eslint: 9.39.5
     dev: true
 
   /@eslint/js/9.39.5:
@@ -2231,6 +2247,11 @@ packages:
 
   /globals/14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+    dev: true
+
+  /globals/17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
     dev: true
 

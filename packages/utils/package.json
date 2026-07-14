@@ -16,9 +16,9 @@
   "dependencies": {
     "ua-parser-js": "^2.0.10",
     "@types/ua-parser-js": "^2.0.10",
-    "@websee/common": "workspace:*",
-    "@websee/core": "workspace:*",
-    "@websee/types": "workspace:*"
+    "@websdk/common": "workspace:*",
+    "@websdk/core": "workspace:*",
+    "@websdk/types": "workspace:*"
   },
   "repository": {
     "type": "git",

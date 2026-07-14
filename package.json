@@ -1,10 +1,18 @@
 {
   "name": "web-sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "前端监控SDK，可用来收集并上报：代码报错、性能数据、用户行为、加载资源、个性化指标等数据",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "publish": "changeset publish --registry=https://registry.npmjs.com/",
+    "release": "pnpm build && pnpm publish",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +33,7 @@
     "@changesets/cli": "^2.27.11",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.21.0",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -37,6 +46,7 @@
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^17.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.2",
@@ -44,5 +54,20 @@
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-typescript2": "^0.37.0",
     "typescript": "~5.7.3"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyz/web-sdk.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
