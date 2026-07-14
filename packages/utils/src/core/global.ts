@@ -3,7 +3,7 @@ import { UAParser } from "ua-parser-js/src/main/ua-parser";
 import { variableTypeDetection } from "./verifyType";
 import { WebSdk, Window } from "@websdk/types";
 
-export const idBrowserEnv = variableTypeDetection.isWindow(
+export const isBrowserEnv = variableTypeDetection.isWindow(
   typeof window !== "undefined" ? window : 0,
 );
 

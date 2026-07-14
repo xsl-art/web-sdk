@@ -50,7 +50,7 @@ export function setMonitorFlag({
   setFlag(EVENT_TYPE.FETCH, monitorFetch);
   setFlag(EVENT_TYPE.CLICK, monitorClick);
   setFlag(EVENT_TYPE.ERROR, monitorError);
-  setFlag(EVENT_TYPE.UNHANDLEDREJECT, monitorUnhandleRejection);
+  setFlag(EVENT_TYPE.UNHANDLEDREJECTION, monitorUnhandleRejection);
   setFlag(EVENT_TYPE.HISTORY, monitorHistory);
   setFlag(EVENT_TYPE.HASHCHANGE, monitorHashChange);
   setFlag(EVENT_TYPE.WHITESCREEN, monitorWhiteScreen);

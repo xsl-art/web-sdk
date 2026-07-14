@@ -42,7 +42,7 @@ export enum EVENT_TYPE {
   HISTORY = "history",
   ERROR = "error",
   HASHCHANGE = "hashchange",
-  UNHANDLEDREJECT = "unhandledreject",
+  UNHANDLEDREJECTION = "unhandledreject",
   RESOURCE = "resource",
   DOM = "dom",
   VUE = "vue",

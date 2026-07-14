@@ -19,7 +19,7 @@ export interface InitOptions {
   monitorWhiteScreen?: boolean; //是否监控白屏事件
   skeletonProject?: boolean; // 白屏检测的项目是否有骨架屏
   whiteBoxElements?: string[]; // 白屏检测的元素列表
-  filterXhrRegExp?: string[]; // 过滤的xhr请求正则表达式
+  filterXhrUrlRegExp?: string[]; // 过滤的xhr请求正则表达式
   useImgUpload?: boolean; // 是否使用图片上传错误信息
   throttleDelayTime?: number; // 节流时间间隔
   overTime?: number; // 超时时间

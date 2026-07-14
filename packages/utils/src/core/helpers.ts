@@ -53,7 +53,7 @@ export const throttle = (fn: any, delay: number) => {
 };
 
 //获取当前时间戳
-export function getTimeStamp(): number {
+export function getTimestamp(): number {
   return Date.now();
 }
 
@@ -101,7 +101,7 @@ export function unknownToString(target: unknown): string {
   return JSON.stringify(target);
 }
 
-export function intercepStr(str: string, interceptLength: number): string {
+export function interceptStr(str: string, interceptLength: number): string {
   if (variableTypeDetection.isString(str)) {
     return (
       str.slice(0, interceptLength) +
