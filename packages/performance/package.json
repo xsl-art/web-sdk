@@ -1,5 +1,5 @@
 {
-  "name": "@websdk/common",
+  "name": "@websdk/performance",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -13,6 +13,12 @@
   ],
   "author": "xyz",
   "license": "ISC",
+  "dependencies": {
+    "@websdk/common": "workspace:*",
+    "@websdk/types": "workspace:*",
+    "@websdk/utils": "workspace:*",
+    "web-vitals": "^5.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xyz/web-sdk.git"
