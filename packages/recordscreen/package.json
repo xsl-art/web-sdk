@@ -1,9 +1,10 @@
 {
-  "name": "@websdk/common",
+  "name": "@websdk/recordscreen",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
   "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "main": "dist/index.js"
   },

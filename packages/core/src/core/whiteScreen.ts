@@ -33,10 +33,10 @@ export function openWhiteScreen(
     } else if (element.className) {
       return (
         "." +
-        element.className
-          .splite(" ")
+        String(element.className)
+          .split(" ")
           .filter((item: any) => !!item)
-          .json(".")
+          .join(".")
       );
     } else {
       return element.nodeName.toLowerCase();

@@ -48,7 +48,7 @@ function use(plugin: any, option: any) {
   if (
     !subscribeEvent({
       callback: data => {
-        instance.transformData(data);
+        instance.transform(data);
       },
       type: instance.type,
     })

@@ -7,7 +7,6 @@ import {
   replaceAop,
   throttle,
   getLocationHref,
-  isExistProperty,
   variableTypeDetection,
   supportsHistory,
 } from "@websdk/utils";
@@ -165,12 +164,10 @@ function fetchReplace(): void {
 }
 
 function listenHashChange(): void {
-  // 通过onpopstate事件，来监听hash模式下路由的变化
-  if (isExistProperty(_global, "onpopstate")) {
-    on(_global, EVENT_TYPE.HASHCHANGE, function (e: HashChangeEvent) {
-      notify(EVENT_TYPE.HASHCHANGE, e);
-    });
-  }
+  // 监听hashchange事件，兼容hash模式路由变化
+  on(_global, "hashchange", function (e: HashChangeEvent) {
+    notify(EVENT_TYPE.HASHCHANGE, e);
+  });
 }
 
 function listenError(): void {
@@ -188,22 +185,25 @@ function listenError(): void {
 let lastHref: string = getLocationHref();
 function historyReplace(): void {
   if (!supportsHistory()) return;
+  console.log("[web-sdk] historyReplace 注册成功");
   const oldOnpopstate = _global.onpopstate;
   _global.onpopstate = function (this: any, ...args: any): void {
     const to = getLocationHref();
     const from = lastHref;
     lastHref = to;
+    console.log("[web-sdk] popstate 路由变化 from:", from, "to:", to);
     notify(EVENT_TYPE.HISTORY, { from, to });
     oldOnpopstate && oldOnpopstate.apply(this, args);
   };
 
   function historyReplaceFn(originalHistoryFn: voidFun): voidFun {
-    return function (this: any, ...args: any): void {
-      const url = args.legnth > 2 ? args[2] : undefined;
+    return function (this: any, ...args: any[]): any {
+      const url = args.length > 2 ? args[2] : undefined;
       if (url) {
         const from = lastHref;
-        const to = String(url);
+        const to = String(new URL(url, location.href));
         lastHref = to;
+        console.log("[web-sdk] pushState/replaceState 路由变化 from:", from, "to:", to);
         notify(EVENT_TYPE.HISTORY, { from, to });
       }
       return originalHistoryFn.apply(this, args);
@@ -222,14 +222,18 @@ function unhandledrejectionReplace(): void {
 
 function domReplace(): void {
   if (!("document" in _global)) return;
+  console.log("[web-sdk] domReplace 注册成功");
   const clickThrottle = throttle(notify, options.throttleDelayTime);
   on(
     _global.document,
     "click",
-    function (this: any): void {
-      clickThrottle({
+    function (event: MouseEvent): void {
+      const activeElement = event.target as HTMLElement;
+      if (!activeElement) return;
+      console.log("[web-sdk] document click:", activeElement.tagName, activeElement.className);
+      clickThrottle(EVENT_TYPE.CLICK, {
         category: "click",
-        ddata: this,
+        data: { activeElement },
       });
     },
     true,

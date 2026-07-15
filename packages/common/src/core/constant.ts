@@ -23,8 +23,8 @@ export enum INTERFACE_STATUS {
 export enum USER_ACTION {
   HTTP = "Http",
   CLICK = "Click",
-  RESOURCE = "Resource_Error",
-  CODEERROR = "Code_Error",
+  RESOURCE = "ResourceError",
+  CODEERROR = "CodeError",
   ROUTER = "Router",
   CUSTOM = "Custom",
 }
@@ -41,16 +41,16 @@ export enum EVENT_TYPE {
   CLICK = "click",
   HISTORY = "history",
   ERROR = "error",
-  HASHCHANGE = "hashchange",
-  UNHANDLEDREJECTION = "unhandledreject",
+  HASHCHANGE = "hashChange",
+  UNHANDLEDREJECTION = "unhandledRejection",
   RESOURCE = "resource",
   DOM = "dom",
   VUE = "vue",
   REACT = "react",
   CUSTOM = "custom",
   PERFORMANCE = "performance",
-  RECORDSCREEN = "recordscreen",
-  WHITESCREEN = "whitescreen",
+  RECORDSCREEN = "recordScreen",
+  WHITESCREEN = "whiteScreen",
 }
 
 export enum HTTPTYPE {

@@ -1,5 +1,5 @@
 import { record } from "rrweb";
-import pako from "pako";
+import { gzip } from "pako";
 import { Base64 } from "js-base64";
 import { getTimestamp, generateUUID, _support } from "@websdk/utils";
 import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
@@ -11,10 +11,11 @@ export function handleScreen(transportData: any, recordScreenDuration: number): 
     emit(event, isCheckout) {
       if (isCheckout) {
         // 此段时间内发生错误，上报录屏信息
-        if (_support.hsaError) {
+        if (_support.hasError) {
           const recordScreenId = _support.recordScreenId;
           _support.recordScreenId = generateUUID();
-          transportData({
+          console.log("[web-sdk] 上报录屏 recordScreenId:", recordScreenId, "events length:", events.length, "第一个事件 type:", events[0]?.type);
+          transportData.send({
             type: EVENT_TYPE.RECORDSCREEN,
             recordScreenId,
             time: getTimestamp(),
@@ -22,7 +23,7 @@ export function handleScreen(transportData: any, recordScreenDuration: number): 
             events: zip(events),
           });
           events = [];
-          _support.hsaError = false;
+          _support.hasError = false;
         } else {
           //不上报清空录屏
           events = [];
@@ -45,7 +46,7 @@ export function zip(data: any): string {
     typeof data !== "string" && typeof data !== "number" ? JSON.stringify(data) : data;
   // 使用Base64.encode处理字符编码，兼容中文
   const str = Base64.encode(dataJson as string);
-  const binaryString = pako.gzip(str);
+  const binaryString = gzip(str);
   const arr = Array.from(binaryString);
   let s = "";
   arr.forEach((item: any) => {

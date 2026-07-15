@@ -2,11 +2,13 @@ import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import { uglify } from "@rollup/plugin-uglify";
-import dts from "@rollup/plugin-dts";
+import terser from "@rollup/plugin-terser";
+import dts from "rollup-plugin-dts";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageDir = path.resolve(__dirname, "packages");
 const packageFiles = fs.readdirSync(packageDir);
 
@@ -36,21 +38,22 @@ function output(path) {
           format: "umd",
           name: "web-see",
           sourcemap: true,
-          plugins: [uglify()],
+          plugins: [terser()],
         },
       ],
       plugins: [
-        typescript({
-          tsconfigOverride: {
-            compilerOptions: {
-              module: "ESNext",
-            },
-          },
-          useTsconfigDeclarationDir: true,
+        resolve({
+          extensions: [".ts", ".tsx", ".js", ".jsx"],
         }),
-        resolve(),
         commonjs(),
         json(),
+        typescript({
+          tsconfig: "./tsconfig.json",
+          compilerOptions: {
+            module: "ESNext",
+            declaration: false,
+          },
+        }),
       ],
     },
     {

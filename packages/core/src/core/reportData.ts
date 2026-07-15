@@ -27,7 +27,9 @@ export class TransportData {
   }
 
   beacon(url: string, data: any): boolean {
-    return navigator.sendBeacon(url, JSON.stringify(data));
+    // 使用 Blob 指定 application/json，确保后端 body-parser 能正确解析
+    const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+    return navigator.sendBeacon(url, blob);
   }
 
   imgRequest(data: ReportData, url: string): void {
@@ -63,7 +65,7 @@ export class TransportData {
 
   getAuthInfo(): any {
     return {
-      userId: this.userId || this.getAuthInfo() || "",
+      userId: this.userId || this.getAuthId() || "",
       sdkVersion: SDK_VERSION,
       apiKey: this.apiKey,
     };
@@ -136,6 +138,7 @@ export class TransportData {
         //修改hasError
         _support.hasError = true;
         data.recordScreenId = _support.recordScreenId;
+        console.log("[web-sdk] 触发录屏标记 type:", data.type, "recordScreenId:", data.recordScreenId);
       }
     }
     const result = (await this.beforePost(data)) as ReportData;

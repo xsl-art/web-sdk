@@ -76,9 +76,13 @@ export function toStringAny(target: any, type: string): boolean {
 
 //验证选项的类型
 export function validateOption(target: any, targetName: string, expectType: string): any {
-  if (!target) return false;
-  if (typeofAny(target) === expectType) return true;
-  console.error(`web-see: ${targetName}期望传入${expectType}类型，目前是${typeofAny(target)}类型`);
+  if (target === null || target === undefined) return false;
+  const actualType = typeofAny(target);
+  if (actualType === expectType) return true;
+  // async 函数也是一种 function
+  if (expectType === "function" && (actualType === "function" || actualType === "asyncfunction"))
+    return true;
+  console.error(`web-see: ${targetName}期望传入${expectType}类型，目前是${actualType}类型`);
 }
 
 export function generateUUID(): string {

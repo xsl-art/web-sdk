@@ -1,5 +1,5 @@
 //全局对象与设备信息
-import { UAParser } from "ua-parser-js/src/main/ua-parser";
+import { UAParser } from "ua-parser-js";
 import { variableTypeDetection } from "./verifyType";
 import { WebSdk, Window } from "@websdk/types";
 

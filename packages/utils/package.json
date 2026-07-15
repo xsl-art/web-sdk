@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "main": "dist/index.js"
   },
@@ -15,9 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "ua-parser-js": "^2.0.10",
-    "@types/ua-parser-js": "^2.0.10",
+    "@types/ua-parser-js": "0.7.39",
     "@websdk/common": "workspace:*",
-    "@websdk/core": "workspace:*",
     "@websdk/types": "workspace:*"
   },
   "repository": {

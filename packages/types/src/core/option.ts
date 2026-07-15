@@ -10,7 +10,7 @@ export interface InitOptions {
   monitorClick?: boolean; //是否监控点击事件
   monitorError?: boolean; //是否监控错误事件
   monitorUnhandleRejection?: boolean; //是否监控未处理的拒绝事件
-  monitorHashChange?: boolean; //是否监控hashchange事件
+  monitorHashChange?: boolean; //是否监控hashChange事件
   monitorHistory?: boolean; //是否监控history事件
   monitorPerformance?: boolean; //是否监控performance事件
   monitorRecordScreen?: boolean; //是否开启录屏

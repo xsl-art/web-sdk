@@ -31,7 +31,8 @@ export default class RecordScreen extends BasePlugin {
     options.monitorRecordScreen = true;
     options.recordScreenTypeList = this.recordScreenTypeList;
     // 添加初始的recordScreenId
-    _support.addRecordScreenId = generateUUID();
+    _support.recordScreenId = generateUUID();
+    console.log("[web-sdk] RecordScreen 插件初始化 monitorRecordScreen:", options.monitorRecordScreen, "recordScreenTypeList:", options.recordScreenTypeList);
     handleScreen(transportData, this.recordScreenDuration);
   }
   transform() {}

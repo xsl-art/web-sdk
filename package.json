@@ -38,6 +38,7 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^22.13.5",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
@@ -52,8 +53,7 @@
     "prettier": "^3.5.2",
     "rollup": "^4.34.8",
     "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-typescript2": "^0.37.0",
-    "typescript": "~5.7.3"
+    "typescript": "~5.6.3"
   },
   "lint-staged": {
     "**/*.{ts,tsx,json}": [
