@@ -414,12 +414,6 @@ export class TransportData {
         //修改hasError
         _support.hasError = true;
         data.recordScreenId = _support.recordScreenId;
-        console.log(
-          "[web-sdk] 触发录屏标记 type:",
-          data.type,
-          "recordScreenId:",
-          data.recordScreenId,
-        );
       }
     }
     if (!this.isSampled(data)) return;

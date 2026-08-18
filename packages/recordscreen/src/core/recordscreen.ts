@@ -16,14 +16,6 @@ export function handleScreen(transportData: any, recordScreenDuration: number): 
         if (_support.hasError) {
           const recordScreenId = _support.recordScreenId;
           _support.recordScreenId = generateUUID();
-          console.log(
-            "[web-sdk] 上报录屏 recordScreenId:",
-            recordScreenId,
-            "events length:",
-            events.length,
-            "第一个事件 type:",
-            events[0]?.type,
-          );
           transportData.send({
             type: EVENT_TYPE.RECORDSCREEN,
             recordScreenId,

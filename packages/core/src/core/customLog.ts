@@ -27,7 +27,7 @@ export function log({ message = "customMsg", error = "", type = EVENT_TYPE.CUSTO
       time: getTimestamp(),
       ...errorInfo,
     });
-  } catch (err) {
-    console.log("上报自定义事件时报错：", err);
+  } catch {
+    throw new Error("自定义上报失败");
   }
 }

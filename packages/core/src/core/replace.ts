@@ -197,14 +197,12 @@ function listenError(): void {
 let lastHref: string = getLocationHref();
 function historyReplace(): void {
   if (!supportsHistory()) return;
-  console.log("[web-sdk] historyReplace 注册成功");
   //监听popstate事件，兼容history模式路由变化
   const oldOnpopstate = _global.onpopstate;
   _global.onpopstate = function (this: any, ...args: any): void {
     const to = getLocationHref();
     const from = lastHref;
     lastHref = to;
-    console.log("[web-sdk] popstate 路由变化 from:", from, "to:", to);
     notify(EVENT_TYPE.HISTORY, { from, to });
     oldOnpopstate && oldOnpopstate.apply(this, args);
   };
@@ -218,7 +216,6 @@ function historyReplace(): void {
         const from = lastHref;
         const to = String(new URL(url, location.href)); //补全路径
         lastHref = to;
-        console.log("[web-sdk] pushState/replaceState 路由变化 from:", from, "to:", to);
         notify(EVENT_TYPE.HISTORY, { from, to });
       }
       return originalHistoryFn.apply(this, args);
@@ -237,7 +234,6 @@ function unhandledrejectionReplace(): void {
 
 function domReplace(): void {
   if (!("document" in _global)) return;
-  console.log("[web-sdk] domReplace 注册成功");
   const clickThrottle = throttle(notify, options.throttleDelayTime);
   on(
     _global.document,
@@ -245,7 +241,6 @@ function domReplace(): void {
     function (event: MouseEvent): void {
       const activeElement = event.target as HTMLElement;
       if (!activeElement) return;
-      console.log("[web-sdk] document click:", activeElement.tagName, activeElement.className);
       clickThrottle(EVENT_TYPE.CLICK, {
         category: "click",
         data: { activeElement },

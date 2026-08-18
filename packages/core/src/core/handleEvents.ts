@@ -189,7 +189,6 @@ const HandleEvents = {
   },
   handleWhiteScreen(): void {
     openWhiteScreen((res: any) => {
-      console.log("白屏返回值", res);
       //上报白屏监测信息
       transportData.send({
         type: EVENT_TYPE.WHITESCREEN,
