@@ -3,9 +3,13 @@ import { UAParser } from "ua-parser-js";
 import { variableTypeDetection } from "./verifyType";
 import { WebSdk, Window } from "@websdk/types";
 
-export const isBrowserEnv = variableTypeDetection.isWindow(
-  typeof window !== "undefined" ? window : 0,
-);
+const maybeWindow = typeof window !== "undefined" ? window : 0;
+
+export const isBrowserEnv =
+  variableTypeDetection.isWindow(maybeWindow) ||
+  (!!maybeWindow &&
+    typeof (maybeWindow as any).document !== "undefined" &&
+    typeof (maybeWindow as any).addEventListener === "function");
 
 //获取全局变量
 export function getGlobal(): Window {
@@ -13,7 +17,7 @@ export function getGlobal(): Window {
 }
 
 const _global = getGlobal();
-const _support = getGlobalSupport();
+const _support = getGlobalSupport(); //获取全局变量__webSdk__的引用地址
 const uaResult = new UAParser().getResult();
 
 //获取设备信息
@@ -24,7 +28,7 @@ _support.deviceInfo = {
   os: uaResult.os.name,
   ua: uaResult.ua,
   device: uaResult.device.model ? uaResult.device.model : "Unknown",
-  device_type: uaResult.device.type ? uaResult.device.type : "Pc",
+  device_type: uaResult.device.type ? uaResult.device.type : "pc",
 };
 
 _support.hasError = false;
@@ -50,8 +54,12 @@ export function getGlobalSupport() {
   return _global.__webSdk__;
 }
 
+/**
+ * 判断是否支持history api
+ */
 export function supportsHistory(): boolean {
   const chrome = _global.chrome;
+  //判断是否为chrome打包应用
   const isChromePackagedApp = chrome && chrome.app && chrome.app.runtime;
   const hasHistoryApi =
     "history" in _global &&

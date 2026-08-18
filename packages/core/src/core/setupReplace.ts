@@ -4,6 +4,9 @@ import { addReplaceHandler, breadcrumb, options } from "./index";
 import { htmlElementAsString, getTimestamp } from "@websdk/utils";
 import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
 
+/**
+ * 根据配置项注册所有事件处理程序（监控事件）
+ */
 export function setupReplace() {
   //白屏检测
   if (options.monitorWhiteScreen) {

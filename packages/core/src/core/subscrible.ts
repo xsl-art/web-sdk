@@ -4,7 +4,10 @@ import { EVENT_TYPE } from "@websdk/common";
 
 const handlers: { [key in EVENT_TYPE]?: ReplaceCallback[] } = {};
 
-// subscribeEvent 设置标识，并将处理的方法放置到handlers中，{ xhr: [ funtion ] }
+/**
+ * subscribeEvent订阅事件，{ xhr: [ funtion ] }
+ * @param handler 事件监听函数
+ */
 export function subscribeEvent(handler: ReplaceHandler): boolean {
   if (!handler || getFlag(handler.type)) return false;
   setFlag(handler.type, true);
@@ -13,6 +16,11 @@ export function subscribeEvent(handler: ReplaceHandler): boolean {
   return true;
 }
 
+/**
+ * notify 通知事件，执行对应事件的回调函数
+ * @param type 事件类型
+ * @param data 事件数据
+ */
 export function notify(type: EVENT_TYPE, data?: any): void {
   if (!type || !handlers[type]) return;
   // 获取对应事件的回调函数并执行，回调函数为addReplaceHandler事件中定义的事件
@@ -20,11 +28,7 @@ export function notify(type: EVENT_TYPE, data?: any): void {
     nativeTryCatch(
       () => callback(data),
       () => {
-        // console.error(
-        //   `web-see 重写事件notify的回调函数发生错误\nType:${type}\nName: ${getFunctionName(
-        //     callback
-        //   )}\nError: ${e}`
-        // );
+        throw new Error("notify error");
       },
     );
   });

@@ -66,6 +66,8 @@ export interface CodeError {
   fileName: string; //错误文件名
   message: string; //错误信息
   line: number; //错误行号
+  stack?: string; //原始错误栈，用于 sourcemap 还原
+  errorUid?: string; //错误指纹，用于聚合和去重
 }
 
 /**用户行为 */
@@ -85,14 +87,32 @@ export interface RecordScreen {
   events: string; //录屏内容
 }
 
-/**上报的数据接口 */
+/**离线上报数据 */
+export interface OfflineReportData {
+  id?: number;
+  data: any;
+  dsn: string;
+  createdAt: number;
+  retryCount: number;
+}
+
+/**批量上报数据 */
+export interface BatchReportData {
+  batch: true;
+  apiKey: string;
+  list: ReportData[];
+}
+
 export interface ReportData
   extends HttpData, ResourceError, LongTask, PerformanceData, MemoryData, CodeError, RecordScreen {
+  count?: number; // 聚合次数
+  isAggregate?: boolean; // 是否聚合
   type: string; //事件类型
   pageUrl: string; //当前页面url
   time: number; //事件时间戳
   uuid: string; //页面唯一标识
   apiKey: string; //项目id
+  release?: string; //业务构建版本，用于 sourcemap 匹配
   status: string; //事件状态
   sdkVersion: string; //sdk版本号
   breadcrumb?: BreadcrumbData[]; //用户行为
@@ -137,6 +157,7 @@ export interface AuthInfo {
   apiKey: string; //项目id
   adkVersion: string; //adk版本号
   userId?: string;
+  release?: string;
 }
 
 export interface BreadcrumbData {
@@ -153,6 +174,7 @@ export interface ErrorTarget {
   };
   error?: any;
   message?: string;
+  stack?: string;
 }
 
 export interface RouteHistory {

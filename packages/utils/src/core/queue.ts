@@ -1,7 +1,9 @@
-//上报队列
 import { _global } from "./global";
 import { voidFun } from "@websdk/types";
 
+/**
+ * 上报队列
+ */
 export class Queue {
   private stack: any[] = [];
   private isFlushing = false; // 标记是否正在批量处理中

@@ -2,6 +2,9 @@ import { EVENT_TYPE, USER_ACTION } from "@websdk/common";
 import { validateOption, getTimestamp, _support } from "@websdk/utils";
 import { BreadcrumbData, InitOptions } from "@websdk/types";
 
+/**
+ * 用户行为栈
+ */
 export class Breadcrumb {
   maxBreadcrumbs = 20;
   beforePushBreadcrumb: unknown = null;
@@ -31,6 +34,7 @@ export class Breadcrumb {
   }
 
   shift(): boolean {
+    //返回是否删除第一个元素
     return this.stack.shift() !== undefined;
   }
 
@@ -77,7 +81,7 @@ export class Breadcrumb {
     // maxBreadcrumbs 用户行为存放的最大容量
     // beforePushBreadcrumb 添加用户行为前的处理函数
     const { maxBreadcrumbs, beforePushBreadcrumb } = options;
-    validateOption(maxBreadcrumbs, "maxBreadcrumbd", "number") &&
+    validateOption(maxBreadcrumbs, "maxBreadcrumbs", "number") &&
       (this.maxBreadcrumbs = maxBreadcrumbs || 20);
     validateOption(beforePushBreadcrumb, "beforePushBreadcrumb", "function") &&
       (this.beforePushBreadcrumb = beforePushBreadcrumb);

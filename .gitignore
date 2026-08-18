@@ -27,3 +27,4 @@ pnpm-debug.log*
 *.sw?
 ZJS-FT.zip
 /node_modules/
+/practice

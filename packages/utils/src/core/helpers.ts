@@ -58,23 +58,31 @@ export function getTimestamp(): number {
 }
 
 //获取当前日期
-export function getYMDHMS(): string {
+export function getYMD(): string {
   const dateTime = new Date();
   const year = dateTime.getFullYear(),
-    month = ("0" + (dateTime.getMonth() + 1)).slice(-2),
-    date = ("0" + dateTime.getDate()).slice(-2);
+    month = String(dateTime.getMonth() + 1).padStart(2, "0"),
+    date = String(dateTime.getDate()).padStart(2, "0");
   return `${year}-${month}-${date}`;
 }
 
+/**获取目标对象的类型 */
 export function typeofAny(target: any): string {
+  //"[object Number]" -> "number"
   return Object.prototype.toString.call(target).slice(8, -1).toLowerCase();
 }
 
+/**验证目标对象的类型是否是string */
 export function toStringAny(target: any, type: string): boolean {
   return Object.prototype.toString.call(target) === type;
 }
 
-//验证选项的类型
+/**验证选项的类型
+ * @param target 目标对象
+ * @param targetName 目标对象名称
+ * @param expectType 期望类型
+ * @returns 是否验证成功
+ */
 export function validateOption(target: any, targetName: string, expectType: string): any {
   if (target === null || target === undefined) return false;
   const actualType = typeofAny(target);
@@ -85,16 +93,19 @@ export function validateOption(target: any, targetName: string, expectType: stri
   console.error(`web-see: ${targetName}期望传入${expectType}类型，目前是${actualType}类型`);
 }
 
+/**生成UUID */
 export function generateUUID(): string {
   let d = new Date().getTime();
   const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     const r = ((d + Math.random() * 16) % 16) | 0;
     d = Math.floor(d / 16);
+    //y=>8-11 8/9/a/b
     return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
   });
   return uuid;
 }
 
+/**将未知类型转换为字符串 */
 export function unknownToString(target: unknown): string {
   if (variableTypeDetection.isString(target)) {
     return target as string;
@@ -105,6 +116,7 @@ export function unknownToString(target: unknown): string {
   return JSON.stringify(target);
 }
 
+/**截取字符串 */
 export function interceptStr(str: string, interceptLength: number): string {
   if (variableTypeDetection.isString(str)) {
     return (

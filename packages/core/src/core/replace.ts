@@ -18,6 +18,10 @@ function isFilteredHttpUrl(url: string): boolean {
   return options.filterXhrUrlRegExp && options.filterXhrUrlRegExp.test(url);
 }
 
+/**
+ * 重写Aop方法
+ * @param type 事件类型
+ */
 function replace(type: EVENT_TYPE): void {
   switch (type) {
     case EVENT_TYPE.WHITESCREEN:
@@ -49,6 +53,11 @@ function replace(type: EVENT_TYPE): void {
   }
 }
 
+/**
+ * 添加重写后的事件监听
+ * @param handler 事件监听函数
+ * @returns
+ */
 export function addReplaceHandler(handler: ReplaceHandler): void {
   if (!subscribeEvent(handler)) return;
   replace(handler.type);
@@ -69,19 +78,20 @@ function xhrReplace(): void {
     };
   });
   replaceAop(originalXhrProto, "send", (originalSend: voidFun) => {
-    return function (this: any, args: any[]): void {
+    return function (this: any, ...args: any[]): void {
       const { method, url } = this.websdk_xhr;
       //监听load事件，接口成功失败都会执行
       on(this, "load", function (this: any) {
         // isSdkTransportUrl 判断当前接口是否为上报的接口
         // isFilterHttpUrl 判断当前接口是否为需要过滤掉的接口
+        //过滤掉sdk自己的上报请求 用户自定义的过滤接口
         if (
           (method === METHOD.Post && transportData.isSdkTransportUrl(url)) ||
           isFilteredHttpUrl(url)
         )
           return;
         const { responseType, response, status } = this;
-        this.websdk_xhr.requestData = args[0];
+        this.websdk_xhr.requestData = args[0]; //请求体
         const eTime = getTimestamp();
         // 设置该接口的time，用户行为按时间排序
         this.websdk_xhr.time = this.websdk_xhr.sTime;
@@ -175,7 +185,7 @@ function listenError(): void {
     _global,
     "error",
     function (e: ErrorEvent) {
-      console.error(e);
+      console.error("[web-sdk] error 事件触发", e);
       notify(EVENT_TYPE.ERROR, e);
     },
     true,
@@ -186,6 +196,7 @@ let lastHref: string = getLocationHref();
 function historyReplace(): void {
   if (!supportsHistory()) return;
   console.log("[web-sdk] historyReplace 注册成功");
+  //监听popstate事件，兼容history模式路由变化
   const oldOnpopstate = _global.onpopstate;
   _global.onpopstate = function (this: any, ...args: any): void {
     const to = getLocationHref();
@@ -198,10 +209,12 @@ function historyReplace(): void {
 
   function historyReplaceFn(originalHistoryFn: voidFun): voidFun {
     return function (this: any, ...args: any[]): any {
+      // 处理pushState/replaceState事件，获取url参数
+      // pushState/replaceState事件的参数为(state, title, url)
       const url = args.length > 2 ? args[2] : undefined;
       if (url) {
         const from = lastHref;
-        const to = String(new URL(url, location.href));
+        const to = String(new URL(url, location.href)); //补全路径
         lastHref = to;
         console.log("[web-sdk] pushState/replaceState 路由变化 from:", from, "to:", to);
         notify(EVENT_TYPE.HISTORY, { from, to });

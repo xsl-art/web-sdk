@@ -1,5 +1,10 @@
 import { INTERFACE_STATUS } from "@websdk/common";
 
+/**
+ * 将http状态码转换为接口状态码
+ * @param httpStatus http状态码
+ * @returns 接口状态码
+ */
 export function fromHttpStatus(httpStatus: any) {
   if (httpStatus < 400) {
     return INTERFACE_STATUS.OK;

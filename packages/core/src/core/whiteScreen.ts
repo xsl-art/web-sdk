@@ -15,7 +15,7 @@ export function openWhiteScreen(
   //项目有骨架屏
   if (skeletonProject) {
     if (document.readyState != "complete") {
-      idleCallback();
+      idleCallback(); //页面还没加载完毕，记录初次采样点
     }
   } else {
     //页面加载完毕
@@ -26,7 +26,7 @@ export function openWhiteScreen(
     }
   }
 
-  //选中dom节点的名称
+  /**选中dom节点的名称*/
   function getSelector(element: any) {
     if (element.id) {
       return "#" + element.id;
@@ -43,19 +43,20 @@ export function openWhiteScreen(
     }
   }
 
-  //判断采样点是否为容器节点
+  /**判断采样点是否为容器节点*/
   function isContainer(element: HTMLElement) {
     const selector = getSelector(element);
     if (skeletonProject) {
       _whiteLoopNum ? _skeletonNowList.push(selector) : _skeletonInitList.push(selector);
     }
-    return whiteBoxElements?.indexOf(selector) != -1;
+    return whiteBoxElements?.indexOf(selector) !== -1;
   }
 
-  //采样对比
+  /**采样对比*/
   function sampling() {
     let emptyPoints = 0;
     for (let i = 1; i <= 9; i++) {
+      //返回给定相对于视口的坐标点下最上层的 Element
       const xElements = document.elementFromPoint(
         (_global.innerWidth * i) / 10,
         _global.innerHeight / 2,
@@ -74,7 +75,7 @@ export function openWhiteScreen(
     //页面正常渲染，停止轮询
     if (emptyPoints != 17) {
       if (skeletonProject) {
-        //第一次不比较
+        //第一次不比较，只记录初次采样点
         if (!_whiteLoopNum) return openWhiteLoop();
         // 比较前后dom是否一致
         if (_skeletonNowList.join() == _skeletonInitList.join())

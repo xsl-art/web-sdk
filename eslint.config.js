@@ -46,6 +46,7 @@ export default [
   {
     ignores: [
       "dist",
+      "**/dist/**",
       "errorJson.js",
       "browser.js",
       "node_modules",

@@ -1,10 +1,13 @@
-//数据标准化
 import { options } from "./options";
 import { fromHttpStatus, interceptStr, getTimestamp } from "@websdk/utils";
 import { HTTP_CODE, STATUS_CODE } from "@websdk/common";
 import { HttpData, ResourceError, ResourceTarget } from "@websdk/types";
 
-//处理接口状态
+/**
+ * 处理接口数据
+ * @param data 接口数据
+ * @returns 处理后的接口数据
+ */
 export function httpTransform(data: HttpData): HttpData {
   let message: any = "";
   const { elapsedTime, time, method = "", type, Status = 200, response, requestData } = data;
@@ -50,6 +53,13 @@ export function httpTransform(data: HttpData): HttpData {
   };
 }
 
+/**
+ * 处理资源数据
+ * @param target 资源对象
+ * @returns time 时间戳
+ * @returns message 报错信息
+ * @returns name 资源类型名
+ */
 export function resourceTransform(target: ResourceTarget): ResourceError {
   return {
     time: getTimestamp(),

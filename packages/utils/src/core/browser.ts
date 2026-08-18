@@ -12,16 +12,6 @@ export function htmlElementAsString(target: HTMLElement): string {
   return `<${tagName}${id}${classNames !== "" ? classNames : ""}>${innerText}</${tagName}>`;
 }
 
-/**地址字符串转换为对象
- * 输入：'https://github.com/xy-sea/web-see?token=123&name=11'
- * 输出：{
- *  "host": "github.com",
- *  "path": "/xy-sea/web-see",
- *  "protocol": "https",
- *  "relative": "/xy-sea/web-see?token=123&name=11"
- * }
- */
-
 export function parseUrlToObj(url: string) {
   if (!url) return {};
   const match = url.match(/^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
@@ -57,7 +47,6 @@ export function setMonitorFlag({
 }
 
 //每一个错误生成唯一编码
-
 export function getErrorUid(input: string): string {
   return window.btoa(encodeURIComponent(input));
 }

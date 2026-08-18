@@ -4,17 +4,26 @@ import { Base64 } from "js-base64";
 import { getTimestamp, generateUUID, _support } from "@websdk/utils";
 import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
 
+/** 处理录屏事件 */
 export function handleScreen(transportData: any, recordScreenDuration: number): void {
   //events存储录屏信息
   let events: any[] = [];
   record({
+    //每帧回调
     emit(event, isCheckout) {
       if (isCheckout) {
         // 此段时间内发生错误，上报录屏信息
         if (_support.hasError) {
           const recordScreenId = _support.recordScreenId;
           _support.recordScreenId = generateUUID();
-          console.log("[web-sdk] 上报录屏 recordScreenId:", recordScreenId, "events length:", events.length, "第一个事件 type:", events[0]?.type);
+          console.log(
+            "[web-sdk] 上报录屏 recordScreenId:",
+            recordScreenId,
+            "events length:",
+            events.length,
+            "第一个事件 type:",
+            events[0]?.type,
+          );
           transportData.send({
             type: EVENT_TYPE.RECORDSCREEN,
             recordScreenId,
@@ -33,7 +42,7 @@ export function handleScreen(transportData: any, recordScreenDuration: number): 
       events.push(event);
     },
     recordCanvas: true,
-    //默认每10s重新制作快照
+    //默认每10s触发isCheckout=true
     checkoutEveryNms: 1000 * recordScreenDuration,
   });
 }
@@ -51,6 +60,6 @@ export function zip(data: any): string {
   let s = "";
   arr.forEach((item: any) => {
     s += String.fromCharCode(item);
-  });
+  }); //转换为二进制字符串
   return Base64.btoa(s);
 }

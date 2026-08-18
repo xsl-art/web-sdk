@@ -1,9 +1,11 @@
-//配置
 import { validateOption, _support } from "@websdk/utils";
 import { InitOptions } from "@websdk/types";
 import { breadcrumb } from "./breadcrumb";
 import { transportData } from "./reportData";
 
+/**
+ * 配置项
+ */
 export class Options {
   dsn = "";
   throttleDelayTime = 0;
@@ -54,7 +56,8 @@ export class Options {
     validateOption(monitorXhr, "monitorXhr", "boolean") && (this.monitorXhr = monitorXhr);
     validateOption(monitorFetch, "monitorFetch", "boolean") && (this.monitorFetch = monitorFetch);
     validateOption(monitorClick, "monitorClick", "boolean") && (this.monitorClick = monitorClick);
-    validateOption(monitorHistory, "monitorHistory", "boolean") && (this.monitorHistory = monitorHistory);
+    validateOption(monitorHistory, "monitorHistory", "boolean") &&
+      (this.monitorHistory = monitorHistory);
     validateOption(monitorHashChange, "monitorHashChange", "boolean") &&
       (this.monitorHashChange = monitorHashChange);
     validateOption(monitorWhiteScreen, "monitorWhiteScreen", "boolean") &&

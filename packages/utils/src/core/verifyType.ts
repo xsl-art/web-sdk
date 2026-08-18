@@ -4,7 +4,7 @@ function isType(type: any) {
   };
 }
 
-//检测汴梁类型
+//检测类型
 export const variableTypeDetection = {
   isNumber: isType("Number"),
   isString: isType("String"),

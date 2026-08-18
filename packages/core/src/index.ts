@@ -20,6 +20,7 @@ function init(options: InitOptions) {
   if (!("fetch" in _global) || options.disabled) return;
   //初始化配置
   handleOptions(options);
+  //开启事件监听
   setupReplace();
 }
 
@@ -29,7 +30,7 @@ function install(Vue: VueInstance, options: InitOptions) {
   setFlag(EVENT_TYPE.VUE, true);
   const handler = Vue.config.errorHandler;
   Vue.config.errorHandler = function (err: Error, vm: ViewModel, info: string): void {
-    console.log(err);
+    console.log("vue 错误：", err);
     HandleEvents.handleError(err);
     if (handler) handler.apply(null, [err, vm, info]);
   };
@@ -40,6 +41,7 @@ function install(Vue: VueInstance, options: InitOptions) {
 function errorBoundary(err: Error): void {
   if (getFlag(EVENT_TYPE.REACT)) return;
   setFlag(EVENT_TYPE.REACT, true);
+  console.log("react 错误：", err);
   HandleEvents.handleError(err);
 }
 
