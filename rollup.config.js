@@ -14,13 +14,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const mainPackages = ["core", "performance", "recordscreen"];
 
 // 第三方依赖（这些不会被打包进去）
+// 注意：如果某个依赖需要被打包进去，请从这里移除
 const externalDeps = [
   "error-stack-parser",
   "rrweb",
   "pako",
   "js-base64",
   "web-vitals",
-  "ua-parser-js",
+  // "ua-parser-js",  // 已内联打包
 ];
 
 function output(pathname) {
