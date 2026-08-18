@@ -10,26 +10,14 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// 只发布这三个主包，每个包完全独立（内联所有 @xyz-sdk/* 依赖）
+// 只发布这三个主包，每个包完全独立（内联所有依赖）
 const mainPackages = ["core", "performance", "recordscreen"];
-
-// 第三方依赖（这些不会被打包进去）
-// 注意：如果某个依赖需要被打包进去，请从这里移除
-const externalDeps = [
-  "error-stack-parser",
-  "rrweb",
-  "pako",
-  "js-base64",
-  "web-vitals",
-  // "ua-parser-js",  // 已内联打包
-];
 
 function output(pathname) {
   return [
     {
       input: [`./packages/${pathname}/src/index.ts`],
-      // 只排除第三方依赖，@xyz-sdk/* 会被内联打包
-      external: externalDeps,
+      // 所有依赖都内联打包，不设置 external
       output: [
         {
           file: `./packages/${pathname}/dist/index.cjs.js`,
@@ -46,15 +34,6 @@ function output(pathname) {
           format: "umd",
           name: "xyz-sdk",
           sourcemap: true,
-          // UMD 格式需要处理第三方依赖的全局变量
-          globals: {
-            "error-stack-parser": "ErrorStackParser",
-            rrweb: "rrweb",
-            pako: "pako",
-            "js-base64": "Base64",
-            "web-vitals": "webVitals",
-            "ua-parser-js": "UAParser",
-          },
         },
         {
           file: `./packages/${pathname}/dist/index.min.js`,
@@ -62,14 +41,6 @@ function output(pathname) {
           name: "xyz-sdk",
           sourcemap: true,
           plugins: [terser()],
-          globals: {
-            "error-stack-parser": "ErrorStackParser",
-            rrweb: "rrweb",
-            pako: "pako",
-            "js-base64": "Base64",
-            "web-vitals": "webVitals",
-            "ua-parser-js": "UAParser",
-          },
         },
       ],
       plugins: [
@@ -83,6 +54,7 @@ function output(pathname) {
         }),
         resolve({
           extensions: [".ts", ".tsx", ".js", ".jsx"],
+          preferBuiltins: false,
         }),
         commonjs(),
         json(),
@@ -97,7 +69,6 @@ function output(pathname) {
     },
     {
       input: `./packages/${pathname}/src/index.ts`,
-      external: externalDeps,
       output: [
         { file: `./packages/${pathname}/dist/index.cjs.d.ts`, format: "cjs" },
         { file: `./packages/${pathname}/dist/index.esm.d.ts`, format: "esm" },
@@ -112,6 +83,10 @@ function output(pathname) {
               replacement: path.resolve(__dirname, "packages/$1/src"),
             },
           ],
+        }),
+        resolve({
+          extensions: [".ts", ".tsx", ".js", ".jsx"],
+          preferBuiltins: false,
         }),
         dts(),
       ],
