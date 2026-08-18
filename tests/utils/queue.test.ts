@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Queue } from "@websdk/utils";
+import { Queue } from "@xyz-sdk/utils";
 
 describe("Queue", () => {
   it("queues callbacks and flushes them asynchronously in order", async () => {

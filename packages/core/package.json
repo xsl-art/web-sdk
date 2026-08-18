@@ -1,5 +1,5 @@
 {
-  "name": "@websdk/core",
+  "name": "@xyz-sdk/core",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -15,9 +15,9 @@
   "author": "xyz",
   "license": "ISC",
   "dependencies": {
-    "@websdk/utils": "workspace:*",
-    "@websdk/common": "workspace:*",
-    "@websdk/types": "workspace:*"
+    "@xyz-sdk/utils": "workspace:*",
+    "@xyz-sdk/common": "workspace:*",
+    "@xyz-sdk/types": "workspace:*"
   },
   "repository": {
     "type": "git",

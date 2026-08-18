@@ -11,11 +11,10 @@ import {
   generateUUID,
   offlineReportCache,
   _global,
-} from "@websdk/utils";
-import { SDK_VERSION, EVENT_TYPE } from "@websdk/common";
-import { ReportData, InitOptions, OfflineReportData } from "@websdk/types";
+} from "@xyz-sdk/utils";
+import { SDK_VERSION, EVENT_TYPE } from "@xyz-sdk/common";
+import { ReportData, InitOptions, OfflineReportData } from "@xyz-sdk/types";
 import { breadcrumb } from "./breadcrumb";
-import { options } from "./options";
 
 /**
  * 上报数据
@@ -409,9 +408,9 @@ export class TransportData {
       console.error("web-sdk: dsn为空，没有传入监控错误上报的dsn地址，请在init中传入");
       return;
     }
-    //开启录屏，由@websdk/recordScreen 插件控制
-    if (_support.options.monitorRecordScreen) {
-      if (options.recordScreenTypeList.includes(data.type)) {
+    //开启录屏，由@xyz-sdk/recordScreen 插件控制
+    if (_support.options?.monitorRecordScreen) {
+      if (_support.options.recordScreenTypeList?.includes(data.type)) {
         //修改hasError
         _support.hasError = true;
         data.recordScreenId = _support.recordScreenId;

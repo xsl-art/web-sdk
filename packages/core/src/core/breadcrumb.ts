@@ -1,6 +1,6 @@
-import { EVENT_TYPE, USER_ACTION } from "@websdk/common";
-import { validateOption, getTimestamp, _support } from "@websdk/utils";
-import { BreadcrumbData, InitOptions } from "@websdk/types";
+import { EVENT_TYPE, USER_ACTION } from "@xyz-sdk/common";
+import { validateOption, getTimestamp, _support } from "@xyz-sdk/utils";
+import { BreadcrumbData, InitOptions } from "@xyz-sdk/types";
 
 /**
  * 用户行为栈

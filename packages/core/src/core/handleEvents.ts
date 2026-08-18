@@ -1,22 +1,19 @@
 //统一处理所有事件
 import ErrorStackParser from "error-stack-parser";
-import {
-  openWhiteScreen,
-  transportData,
-  breadcrumb,
-  resourceTransform,
-  httpTransform,
-  options,
-} from "./index";
-import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
+import { breadcrumb } from "./breadcrumb";
+import { transportData } from "./reportData";
+import { resourceTransform, httpTransform } from "./transformData";
+import { options } from "./options";
+import { openWhiteScreen } from "./whiteScreen";
+import { EVENT_TYPE, STATUS_CODE } from "@xyz-sdk/common";
 import {
   getErrorUid,
   hashMapExist,
   getTimestamp,
   parseUrlToObj,
   unknownToString,
-} from "@websdk/utils";
-import { ErrorTarget, RouteHistory, HttpData } from "@websdk/types";
+} from "@xyz-sdk/utils";
+import { ErrorTarget, RouteHistory, HttpData } from "@xyz-sdk/types";
 
 function safeUnknownToString(target: unknown): string {
   try {

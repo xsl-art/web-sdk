@@ -1,8 +1,10 @@
 //注册所有事件处理程序
 import { HandleEvents } from "./handleEvents";
-import { addReplaceHandler, breadcrumb, options } from "./index";
-import { htmlElementAsString, getTimestamp } from "@websdk/utils";
-import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
+import { addReplaceHandler } from "./replace";
+import { breadcrumb } from "./breadcrumb";
+import { options } from "./options";
+import { htmlElementAsString, getTimestamp } from "@xyz-sdk/utils";
+import { EVENT_TYPE, STATUS_CODE } from "@xyz-sdk/common";
 
 /**
  * 根据配置项注册所有事件处理程序（监控事件）

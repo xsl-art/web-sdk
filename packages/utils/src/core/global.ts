@@ -1,7 +1,7 @@
 //全局对象与设备信息
 import { UAParser } from "ua-parser-js";
 import { variableTypeDetection } from "./verifyType";
-import { WebSdk, Window } from "@websdk/types";
+import { WebSdk, Window } from "@xyz-sdk/types";
 
 const maybeWindow = typeof window !== "undefined" ? window : 0;
 

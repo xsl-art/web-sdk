@@ -1,7 +1,7 @@
 import { handleScreen } from "./core/recordscreen";
-import { SdkBase, RecordScreenOptions, BasePlugin } from "@websdk/types";
-import { EVENT_TYPE } from "@websdk/common";
-import { validateOption, generateUUID, _support } from "@websdk/utils";
+import { SdkBase, RecordScreenOptions, BasePlugin } from "@xyz-sdk/types";
+import { EVENT_TYPE } from "@xyz-sdk/common";
+import { validateOption, generateUUID, _support } from "@xyz-sdk/utils";
 
 export default class RecordScreen extends BasePlugin {
   type: string;

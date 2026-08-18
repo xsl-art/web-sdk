@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^@websdk\/(.*)$/,
+        find: /^@xyz-sdk\/(.*)$/,
         replacement: path.resolve(rootDir, "packages/$1/src"),
       },
     ],

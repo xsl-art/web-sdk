@@ -1,7 +1,7 @@
 //白屏检测
-import { STATUS_CODE } from "@websdk/common";
-import { _global, _support } from "@websdk/utils";
-import { Callback, InitOptions } from "@websdk/types";
+import { STATUS_CODE } from "@xyz-sdk/common";
+import { _global, _support } from "@xyz-sdk/utils";
+import { Callback, InitOptions } from "@xyz-sdk/types";
 
 /**检测页面是否白屏 */
 export function openWhiteScreen(

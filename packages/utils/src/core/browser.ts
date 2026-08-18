@@ -1,5 +1,5 @@
 import { setFlag, _support } from "./global";
-import { EVENT_TYPE } from "@websdk/common";
+import { EVENT_TYPE } from "@xyz-sdk/common";
 
 /**返回包含id class innerText字符串的标签 */
 export function htmlElementAsString(target: HTMLElement): string {

@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "bundler",
     "paths": {
-      "@websdk/*": ["./packages/*/src"]
+      "@xyz-sdk/*": ["./packages/*/src"]
     },
     "jsx": "react",
     "esModuleInterop": true

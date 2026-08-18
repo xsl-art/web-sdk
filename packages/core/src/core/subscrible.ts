@@ -1,6 +1,6 @@
-import { getFlag, nativeTryCatch, setFlag } from "@websdk/utils";
-import { ReplaceHandler, ReplaceCallback } from "@websdk/types";
-import { EVENT_TYPE } from "@websdk/common";
+import { getFlag, nativeTryCatch, setFlag } from "@xyz-sdk/utils";
+import { ReplaceHandler, ReplaceCallback } from "@xyz-sdk/types";
+import { EVENT_TYPE } from "@xyz-sdk/common";
 
 const handlers: { [key in EVENT_TYPE]?: ReplaceCallback[] } = {};
 

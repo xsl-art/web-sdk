@@ -1,7 +1,7 @@
 import { options } from "./options";
-import { fromHttpStatus, interceptStr, getTimestamp } from "@websdk/utils";
-import { HTTP_CODE, STATUS_CODE } from "@websdk/common";
-import { HttpData, ResourceError, ResourceTarget } from "@websdk/types";
+import { fromHttpStatus, interceptStr, getTimestamp } from "@xyz-sdk/utils";
+import { HTTP_CODE, STATUS_CODE } from "@xyz-sdk/common";
+import { HttpData, ResourceError, ResourceTarget } from "@xyz-sdk/types";
 
 /**
  * 处理接口数据

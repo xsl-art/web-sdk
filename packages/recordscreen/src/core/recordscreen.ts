@@ -1,8 +1,8 @@
 import { record } from "rrweb";
 import { gzip } from "pako";
 import { Base64 } from "js-base64";
-import { getTimestamp, generateUUID, _support } from "@websdk/utils";
-import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
+import { getTimestamp, generateUUID, _support } from "@xyz-sdk/utils";
+import { EVENT_TYPE, STATUS_CODE } from "@xyz-sdk/common";
 
 /** 处理录屏事件 */
 export function handleScreen(transportData: any, recordScreenDuration: number): void {

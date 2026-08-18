@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { isSampledHit, TokenBucket } from "@websdk/utils";
+import { isSampledHit, TokenBucket } from "@xyz-sdk/utils";
 
 describe("TokenBucket", () => {
   beforeEach(() => {

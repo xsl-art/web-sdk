@@ -1,4 +1,6 @@
-import { transportData, options, notify, subscribeEvent } from "./index";
+import { transportData } from "./reportData";
+import { options } from "./options";
+import { notify, subscribeEvent } from "./subscrible";
 
 import {
   _global,
@@ -9,9 +11,9 @@ import {
   getLocationHref,
   variableTypeDetection,
   supportsHistory,
-} from "@websdk/utils";
-import { EVENT_TYPE, HTTPTYPE, METHOD } from "@websdk/common";
-import { ReplaceHandler, voidFun } from "@websdk/types";
+} from "@xyz-sdk/utils";
+import { EVENT_TYPE, HTTPTYPE, METHOD } from "@xyz-sdk/common";
+import { ReplaceHandler, voidFun } from "@xyz-sdk/types";
 
 //判断当前接口是否为要过滤掉的接口
 function isFilteredHttpUrl(url: string): boolean {

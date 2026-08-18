@@ -4,14 +4,22 @@ import {
   transportData,
   breadcrumb,
   options,
-  handleOptions,
   log,
   setupReplace,
   HandleEvents,
 } from "./core/index";
-import { _global, getFlag, setFlag, nativeTryCatch } from "@websdk/utils";
-import { SDK_VERSION, SDK_NAME, EVENT_TYPE } from "@websdk/common";
-import { InitOptions, VueInstance, ViewModel } from "@websdk/types";
+import { _global, getFlag, setFlag, nativeTryCatch } from "@xyz-sdk/utils";
+import { SDK_VERSION, SDK_NAME, EVENT_TYPE } from "@xyz-sdk/common";
+import { InitOptions, VueInstance, ViewModel } from "@xyz-sdk/types";
+
+function handleOptions(paramOptions: InitOptions) {
+  //设置用户行为的配置项
+  breadcrumb.bindOptions(paramOptions);
+  //配置上报的信息
+  transportData.bindOptions(paramOptions);
+  //绑定其他配置项
+  options.bindOptions(paramOptions);
+}
 
 function init(options: InitOptions) {
   if (!options.dsn || !options.apiKey) {

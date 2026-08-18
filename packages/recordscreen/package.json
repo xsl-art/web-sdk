@@ -1,5 +1,5 @@
 {
-  "name": "@websdk/recordscreen",
+  "name": "@xyz-sdk/recordscreen",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -16,9 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "@types/pako": "^2.0.4",
-    "@websdk/common": "workspace:*",
-    "@websdk/types": "workspace:*",
-    "@websdk/utils": "workspace:*",
+    "@xyz-sdk/common": "workspace:*",
+    "@xyz-sdk/types": "workspace:*",
+    "@xyz-sdk/utils": "workspace:*",
     "js-base64": "^3.8.1",
     "pako": "^3.0.1",
     "rrweb": "^2.1.0"

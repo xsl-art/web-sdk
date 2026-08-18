@@ -1,5 +1,5 @@
 import { variableTypeDetection } from "./verifyType";
-import { Callback, IAnyObject } from "@websdk/types";
+import { Callback, IAnyObject } from "@xyz-sdk/types";
 
 export function getLocationHref(): string {
   if (typeof document === "undefined" || document.location == null) return "";

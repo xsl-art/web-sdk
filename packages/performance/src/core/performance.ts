@@ -1,5 +1,5 @@
-import { on, _global } from "@websdk/utils";
-import { Callback } from "@websdk/types";
+import { on, _global } from "@xyz-sdk/utils";
+import { Callback } from "@xyz-sdk/types";
 import { onLCP, onINP, onCLS, onFCP, onTTFB } from "web-vitals";
 
 // firstScreenPaint为首屏加载时间

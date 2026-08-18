@@ -14,7 +14,7 @@
 - 压缩 UMD: `dist/index.min.js`
 - 对应的 `.d.ts` 类型声明
 
-TypeScript 开启严格模式，路径别名为 `@websdk/* -> ./packages/*/src`。
+TypeScript 开启严格模式，路径别名为 `@xyz-sdk/* -> ./packages/*/src`。
 
 ## 包职责
 
@@ -78,7 +78,7 @@ TypeScript 开启严格模式，路径别名为 `@websdk/* -> ./packages/*/src`�
 - 可复用工具函数放在 `packages/utils`。
 - SDK 基础采集和上报链路放在 `packages/core`。
 - 新增可插拔能力时，优先按 `BasePlugin` 插件模式实现，并通过 `core.use()` 接入。
-- 保持 `@websdk/*` workspace 依赖和路径别名，不要引入跨包相对路径。
+- 保持 `@xyz-sdk/*` workspace 依赖和路径别名，不要引入跨包相对路径。
 - 上报数据结构变化时，同步更新 `packages/types/src` 中对应类型。
 - 监控开关或用户配置变化时，同步检查 `InitOptions`、`Options.bindOptions()` 和相关插件的默认值。
 
@@ -107,4 +107,3 @@ TypeScript 开启严格模式，路径别名为 `@websdk/* -> ./packages/*/src`�
 - 类型或工具函数改动：运行 `pnpm build`。
 - 核心采集、上报、插件逻辑改动：运行 `pnpm build` 和 `pnpm lint`，并尽量在浏览器环境手动验证初始化、事件采集和上报。
 - 发布相关改动：确认 `changeset`、包版本、构建产物和 `publishConfig`。
-

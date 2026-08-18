@@ -1,4 +1,4 @@
-import { EVENT_TYPE, STATUS_CODE, USER_ACTION } from "@websdk/common";
+import { EVENT_TYPE, STATUS_CODE, USER_ACTION } from "@xyz-sdk/common";
 
 //Without把T中不包含U的属性设置为可选
 export type Without<T, U> = {

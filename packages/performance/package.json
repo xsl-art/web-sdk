@@ -1,5 +1,5 @@
 {
-  "name": "@websdk/performance",
+  "name": "@xyz-sdk/performance",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -15,9 +15,9 @@
   "author": "xyz",
   "license": "ISC",
   "dependencies": {
-    "@websdk/common": "workspace:*",
-    "@websdk/types": "workspace:*",
-    "@websdk/utils": "workspace:*",
+    "@xyz-sdk/common": "workspace:*",
+    "@xyz-sdk/types": "workspace:*",
+    "@xyz-sdk/utils": "workspace:*",
     "web-vitals": "^5.3.0"
   },
   "repository": {

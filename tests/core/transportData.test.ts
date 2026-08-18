@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { EVENT_TYPE } from "@websdk/common";
-import { TokenBucket } from "@websdk/utils";
+import { EVENT_TYPE } from "@xyz-sdk/common";
+import { TokenBucket } from "@xyz-sdk/utils";
 import { TransportData } from "../../packages/core/src/core/reportData";
 
 function createTransport(): TransportData {

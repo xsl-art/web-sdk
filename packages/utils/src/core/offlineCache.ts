@@ -1,4 +1,4 @@
-import { OfflineReportData } from "@websdk/types";
+import { OfflineReportData } from "@xyz-sdk/types";
 
 const DB_NAME = "web-sdk";
 const STORE_NAME = "offlineReports";

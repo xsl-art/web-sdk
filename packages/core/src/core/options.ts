@@ -1,7 +1,5 @@
-import { validateOption, _support } from "@websdk/utils";
-import { InitOptions } from "@websdk/types";
-import { breadcrumb } from "./breadcrumb";
-import { transportData } from "./reportData";
+import { validateOption, _support } from "@xyz-sdk/utils";
+import { InitOptions } from "@xyz-sdk/types";
 
 /**
  * 配置项
@@ -74,14 +72,5 @@ export class Options {
 }
 
 const options = _support.options || (_support.options = new Options());
-
-export function handleOptions(paramOptions: InitOptions) {
-  //设置用户行为的配置项
-  breadcrumb.bindOptions(paramOptions);
-  //配置上报的信息
-  transportData.bindOptions(paramOptions);
-  //绑定其他配置项
-  options.bindOptions(paramOptions);
-}
 
 export { options };

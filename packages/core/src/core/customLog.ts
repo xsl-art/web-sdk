@@ -2,8 +2,8 @@
 import ErrorStackParser from "error-stack-parser";
 import { transportData } from "./reportData";
 import { breadcrumb } from "./breadcrumb";
-import { isError, getTimestamp, unknownToString } from "@websdk/utils";
-import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
+import { isError, getTimestamp, unknownToString } from "@xyz-sdk/utils";
+import { EVENT_TYPE, STATUS_CODE } from "@xyz-sdk/common";
 
 //自定义事件上报
 export function log({ message = "customMsg", error = "", type = EVENT_TYPE.CUSTOM }: any): void {

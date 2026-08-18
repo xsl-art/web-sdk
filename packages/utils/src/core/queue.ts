@@ -1,5 +1,5 @@
 import { _global } from "./global";
-import { voidFun } from "@websdk/types";
+import { voidFun } from "@xyz-sdk/types";
 
 /**
  * 上报队列

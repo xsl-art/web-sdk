@@ -1,5 +1,5 @@
 {
-  "name": "@websdk/utils",
+  "name": "@xyz-sdk/utils",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -17,8 +17,8 @@
   "dependencies": {
     "ua-parser-js": "^2.0.10",
     "@types/ua-parser-js": "0.7.39",
-    "@websdk/common": "workspace:*",
-    "@websdk/types": "workspace:*"
+    "@xyz-sdk/common": "workspace:*",
+    "@xyz-sdk/types": "workspace:*"
   },
   "repository": {
     "type": "git",

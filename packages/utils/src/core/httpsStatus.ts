@@ -1,4 +1,4 @@
-import { INTERFACE_STATUS } from "@websdk/common";
+import { INTERFACE_STATUS } from "@xyz-sdk/common";
 
 /**
  * 将http状态码转换为接口状态码

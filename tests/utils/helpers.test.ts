@@ -7,7 +7,7 @@ import {
   throttle,
   unknownToString,
   validateOption,
-} from "@websdk/utils";
+} from "@xyz-sdk/utils";
 
 describe("helpers", () => {
   it("parseUrlToObj splits host, path and relative", () => {

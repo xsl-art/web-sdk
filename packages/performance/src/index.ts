@@ -1,7 +1,7 @@
 import { getWebVitals, getResource } from "./core/performance";
-import { SdkBase, BasePlugin } from "@websdk/types";
-import { EVENT_TYPE, STATUS_CODE } from "@websdk/common";
-import { getTimestamp, _global, on } from "@websdk/utils";
+import { SdkBase, BasePlugin } from "@xyz-sdk/types";
+import { EVENT_TYPE, STATUS_CODE } from "@xyz-sdk/common";
+import { getTimestamp, _global, on } from "@xyz-sdk/utils";
 
 export default class WebPerformance extends BasePlugin {
   type: string;

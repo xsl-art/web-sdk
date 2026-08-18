@@ -1,6 +1,6 @@
 import "fake-indexeddb/auto";
 import { beforeEach, describe, expect, it } from "vitest";
-import { OfflineReportCache } from "@websdk/utils";
+import { OfflineReportCache } from "@xyz-sdk/utils";
 
 function makeRecord(createdAt: number) {
   return {
