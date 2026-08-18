@@ -1,13 +1,10 @@
 {
   "name": "@xyz-sdk/performance",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
+  "description": "性能监控 SDK - 页面性能指标采集",
+  "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "main": "dist/index.js"
-  },
   "type": "module",
   "files": [
     "dist"
@@ -15,13 +12,13 @@
   "author": "xyz",
   "license": "ISC",
   "dependencies": {
-    "@xyz-sdk/common": "workspace:*",
-    "@xyz-sdk/types": "workspace:*",
-    "@xyz-sdk/utils": "workspace:*",
     "web-vitals": "^5.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xyz/web-sdk.git"
+    "url": "https://github.com:xsl-art/web-sdk.git"
   }
 }
