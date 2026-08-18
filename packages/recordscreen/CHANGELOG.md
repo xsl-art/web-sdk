@@ -1,5 +1,11 @@
 # @xyz-sdk/recordscreen
 
+## 3.0.2
+
+### Patch Changes
+
+- 修复依赖解析问题
+
 ## 3.0.1
 
 ### Patch Changes
