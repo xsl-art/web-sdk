@@ -1,6 +1,6 @@
 {
   "name": "@xyz-sdk/core",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "基础监控 SDK - 错误捕获与上报",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
