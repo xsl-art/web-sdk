@@ -1,6 +1,10 @@
 {
   "name": "@xyz-sdk/recordscreen",
-  "version": "3.0.2",
+<<<<<<< Updated upstream
+  "version": "2.0.0",
+=======
+  "version": "3.0.3",
+>>>>>>> Stashed changes
   "description": "录屏 SDK - 用户操作录制与回放",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
