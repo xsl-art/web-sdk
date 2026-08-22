@@ -25,19 +25,6 @@ npm install @xyz-sdk/performance
 npm install @xyz-sdk/recordscreen
 ```
 
-### CDN
-
-```html
-<!-- 基础监控 -->
-<script src="https://unpkg.com/@xyz-sdk/core@latest/dist/index.min.js"></script>
-
-<!-- 性能监控 -->
-<script src="https://unpkg.com/@xyz-sdk/performance@latest/dist/index.min.js"></script>
-
-<!-- 录屏功能 -->
-<script src="https://unpkg.com/@xyz-sdk/recordscreen@latest/dist/index.min.js"></script>
-```
-
 ## 快速开始
 
 ### 基础使用（原生 JS）
